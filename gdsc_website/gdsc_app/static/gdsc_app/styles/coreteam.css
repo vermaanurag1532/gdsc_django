@@ -1,0 +1,165 @@
+.coreteam_main {
+    margin: 10rem 0;
+    position: relative;
+}
+
+.coreteam_wavy {
+    width: 100vw;
+}
+
+.coreteam_heading {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 5rem;
+    padding: 2rem;
+    text-align: center;
+    /* font-feature-settings: 'pnum' on, 'lnum' on; */
+}
+
+.coreteam_box_1 {
+    display: flex;
+    padding: 2rem;
+    justify-content: space-evenly;
+}
+
+.coreteam_design {
+    position: absolute;
+    width: 7rem;
+    height: auto;
+    bottom: -8rem;
+    right: 8rem;
+    animation: spin 3000ms infinite linear;
+}
+
+.coreteam_img_box1 img {
+    object-fit: cover;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    padding: .4rem;
+    border: 1px solid #db4437;
+}
+
+.coreteam_img_box2 img {
+    object-fit: cover;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    padding: .4rem;
+    border: 1px solid #f4b400;
+}
+
+.coreteam_img_box3 img {
+    object-fit: cover;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    padding: .4rem;
+    border: 1px solid #0f9d58;
+}
+
+.coreteam_img_box4 img {
+    object-fit: cover;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    padding: .4rem;
+    border: 1px solid #4285f4;
+}
+
+.coreteam_img_box1 p {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 3rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    text-align: center;
+}
+
+.coreteam_img_box2 p {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 3rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    text-align: center;
+}
+
+.coreteam_img_box3 p {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 3rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    text-align: center;
+}
+
+.coreteam_img_box4 p {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 3rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    text-align: center;
+}
+
+.coreteam_img_box div {
+    margin-top: 3rem;
+}
+
+@media screen and (max-width: 350px) {
+    .coreteam_box_1 {
+        flex-direction: column;
+        align-items: center;
+    }
+    .coreteam_img_box div {
+        margin: 3rem 0;
+    }
+    .coreteam_img_box p {
+        font-size: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .coreteam_img_box1 img {
+        padding: .3rem;
+        border: 3px;
+        border-style: solid;
+        border-color: #db4437;
+    }
+    .coreteam_img_box2 img {
+        padding: .3rem;
+        border: 3px;
+        border-style: solid;
+        border-color: #f4b400;
+    }
+    .coreteam_img_box3 img {
+        padding: .3rem;
+        border: 3px;
+        border-style: solid;
+        border-color: #0f9d58;
+    }
+    .coreteam_img_box4 img {
+        padding: .3rem;
+        border: 3px;
+        border-style: solid;
+        border-color: #4285f4;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
