@@ -17,32 +17,33 @@
 
 {% comment %} club_insights {% endcomment %}
 
-<section class="club_insights" id="insights" data-aos="fade-up">
+<section class="club_insights" style="background: url('{% static 'assets/club_insights/insightsVector.svg' %}')" id="insights" data-aos="fade-up">
     <h1 class="insights_heading">Club Insights</h1>
     <div class="insights">
-        <div class="column_one">
-            <div class="column_one-line1"></div>
-            <div class="column_one-line2"></div>
-            <div class="element_one1" data-aos="fade-right">
-                You get to try everything from development to Problem Solving to Soft Skills
-            </div>
-            <div class="element_one2" data-aos="fade-right">
-                Three successful cohorts already completed
-            </div>
+      <div class="column_one">
+        <div class="column_one-line1"></div>
+        <div class="column_one-line2"></div>
+        <div class="element_one1" data-aos="fade-right">
+          You get to try everything from development to Problem Solving to
+          Soft Skills
         </div>
-        <div class="column_two">
-            <div class="column_two-line1"></div>
-            <div class="column_two-line2"></div>
-            <div class="element_two1" data-aos="fade-left">
-                You get to be a part of national community where girls support each other and grow
-            </div>
-            <div class="element_two2" data-aos="fade-left">
-                You get to boost your resume in the first year itself
-            </div>
+        <div class="element_one2" data-aos="fade-right">
+          Three successful cohorts already completed
         </div>
+      </div>
+      <div class="column_two">
+        <div class="column_two-line1"></div>
+        <div class="column_two-line2"></div>
+        <div class="element_two1" data-aos="fade-left">
+          You get to be a part of national community where girls support each
+          other and grow
+        </div>
+        <div class="element_two2" data-aos="fade-left">
+          You get to boost your resume in the first year itself
+        </div>
+      </div>
     </div>
-</section>
-
+  </section>
 
 
 {% comment %} our_activities {% endcomment %}
@@ -53,12 +54,13 @@
     <h1>Our Activities</h1>
     <img src="{% static 'assets/our_activities/rotatedsquare.png' %}" class="activities_logo1" />
     <img src="{% static 'assets/our_activities/squarelogo.png' %}" class="activities_logo2" />
-    <div class="our_activities_boxes">
+    <div class="our_activities_boxes row">
         {% for activity in our_activities %}
-        <div class="our_activities_box our_activities_box1" data-aos="zoom-in-up">
-            <div class="our_activities_circle circle1"></div>
+        <div class="our_activities_box our_activities_box1 col-md-6 col-sm-6 col-xs-12" data-aos="zoom-in-up">
+            
             <h3 class="our_activities_box_heading">{{ activity.activity_name }}</h3>
             <span class="our_activities_content">{{ activity.description}}</span>
+            
         </div>
         {% endfor %}
         
@@ -92,55 +94,19 @@
 
 
 <section class="coreteam_main" id="core-team" data-aos="fade-up">
-        <img src="./assets/core_team_images/wave.png" class="coreteam_wavy" />
-        <img src="./assets/core_team_images/circleDesign.svg" class="coreteam_design" />
+        <img src="{% static 'assets/core_team/wave.png' %}" class="coreteam_wavy" />
+        <img src="{% static 'assets/core_team/circleDesign.svg' %}" class="coreteam_design" />
         <h1 class="coreteam_heading">Core Team</h1>
         <div class="row coreteam_boxes coreteam_box_1">
+            {% for person in coreTeams %}
                 <div class="coreteam_img_box1 flex  col-md-4 col-sm-6 col-xs-12" data-aos="zoom-in-up">
-                    <img src="./assets/core_team_images/Tushar.jpg" alt="" />
+                    <img src="{% static person.image.url %}" alt="" />
                     <div>
-                        <p>Tushar Sharama</p>
-                        <p>Creative Lead</p>
+                        <p>{{ person.full_name }}</p>
+                        <p>{{ person.designation}}</p>
                     </div>
                 </div>
-    
-                <div class="coreteam_img_box2 flex col-md-4 col-sm-6 col-xs-12" data-aos="zoom-in-up">
-                    <img src="./assets/core_team_images/Ashutosh.jpeg" alt="" />
-                    <div>
-                        <p>Ashutosh Kumar Choudhary</p>
-                        <p>Open Source Lead</p>
-                    </div>
-                </div>
-                <div class="coreteam_img_box3 flex col-md-4 col-sm-6 col-xs-12" data-aos="zoom-in-up">
-                    <img src="./assets/core_team_images/Mohak.jpeg" alt="" />
-                    <div>
-                        <p>Mohak Srivastav</p>
-                        <p>Android Lead</p>
-                    </div>
-                </div>
-        
-                <div class="coreteam_img_box4 flex col-md-4 col-sm-6 col-xs-12" data-aos="zoom-in-up">
-                    <img src="./assets/core_team_images/Utkarsh.jpg" alt="" />
-                    <div>
-                        <p>Utkarsh Agarwal</p>
-                        <p>DSA problem Solving Lead</p>
-                    </div>
-                </div>
-    
-                <div class="coreteam_img_box1 flex col-md-4 col-sm-6 col-xs-12" data-aos="zoom-in-up">
-                    <img src="./assets/core_team_images/Neha.jpeg" alt="" />
-                    <div>
-                        <p>Neha Kalbande</p>
-                        <p>AI/ML Lead</p>
-                    </div>
-                </div>
-                <div class="coreteam_img_box2 flex col-md-4 col-sm-6 col-xs-12" data-aos="zoom-in-up">
-                    <img src="./assets/core_team_images/Ritika.jpeg" alt="" />
-                    <div>
-                        <p>Ritika Bhatt</p>
-                        <p>Web Development Lead</p>
-                    </div>
-                </div>
+                {% endfor %}
         </div>
     </section>
 
@@ -150,84 +116,28 @@
 
 
 
-<section class="events" id="events" data-aos="fade-up">
+<section class="events" id="events"  data-aos="fade-up">
     <h1 class="events__heading">Events</h1>
-    <div class="events__section" data-aos="fade-up">
-        <div class="events__link">
-            <a class="events__link-a" href="#">All</a>
-            <a class="events__link-a" href="#">Upcoming</a>
-            <a class="events__link-a" href="#">Past</a>
+    <div class="viewport">
+        <button class="prev btn-primary">Prev</button>
+      <button class="next">Next</button>
+        <div class="track">
+            {% for event in events %}
+          <div class="item">
+            <img class="events__card-image" src="{% static 'assets/events/event.svg' %}" alt="Failed to load " />
+           <div class="shadow"></div>
+            <div class="caption"><div>
+                <h5 class="events__card-date">{{ event.date}}</h5>
+                <h5 class="events__card-title">{{ event.title}}</h5>
+                <p class="events__card-info">{{ event.info }}</p>
+            </div></div> 
+          </div>
+       {% endfor %}
         </div>
-        <div class="events__main">
-            <div class="events__icon events__icon-left" onclick="scroll_left()">
-                <img class="events__icon" src="{% static 'assets/events/clickArrow.svg' %}" />
-            </div>
-            <div class="events__container" data-aos="fade-up">
-                <div class="events__container-item">
-                    <div class="events__card">
-                        <img class="events__card-image" src="{% static 'assets/events/event.svg' %}" alt="Failed to load " />
-                        <div>
-                            <h5 class="events__card-date">MAY 17, 2020</h5>
-                            <h5 class="events__card-title">Explore ML Intermediate</h5>
-                            <p class="events__card-info">Multiple Linear Regression</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="events__container-item">
-                    <div class="events__card">
-                        <img class="events__card-image" src="{% static 'assets/events/event.svg' %}" alt="Failed to load " />
-                        <div>
-                            <h5 class="events__card-date">MAY 17, 2020</h5>
-                            <h5 class="events__card-title">Explore ML Intermediate</h5>
-                            <p class="events__card-info">Multiple Linear Regression</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="events__container-item">
-                    <div class="events__card">
-                        <img class="events__card-image" src="{% static 'assets/events/event.svg' %}" alt="Failed to load " />
-                        <div>
-                            <h5 class="events__card-date">MAY 17, 2020</h5>
-                            <h5 class="events__card-title">Explore ML Intermediate</h5>
-                            <p class="events__card-info">Multiple Linear Regression</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="events__container-item">
-                    <div class="events__card">
-                        <img class="events__card-image" src="{% static 'assets/events/event.svg' %}" alt="Failed to load " />
-                        <div>
-                            <h5 class="events__card-date">MAY 17, 2020</h5>
-                            <h5 class="events__card-title">Explore ML Intermediate</h5>
-                            <p class="events__card-info">Multiple Linear Regression</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="events__container-item">
-                    <div class="events__card">
-                        <img class="events__card-image" src="{% static 'assets/events/event.svg' %}" alt="Failed to load " />
-                        <div>
-                            <h5 class="events__card-date">MAY 17, 2020</h5>
-                            <h5 class="events__card-title">Explore ML Intermediate</h5>
-                            <p class="events__card-info">Multiple Linear Regression</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="events__container-item">
-                    <div class="events__card">
-                        <img class="events__card-image" src="{% static 'assets/events/event.svg' %}" alt="Failed to load " />
-                        <div>
-                            <h5 class="events__card-date">MAY 17, 2020</h5>
-                            <h5 class="events__card-title">Explore ML Intermediate</h5>
-                            <p class="events__card-info">Multiple Linear Regression</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="events__icon events__icon-right" onclick="scroll_right()">
-                <img class="events__icon" src="{% static 'assets/events/clickArrow.svg' %}" />
-            </div>
-        </div>
-    </div>
+      </div>
 </section>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'gdsc_app/script/event.js' %}"></script>
 {% endblock %}

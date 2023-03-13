@@ -1,149 +1,185 @@
+html {  
+  --value: -1500;
+  --width: calc(var(--value) * -1 * 1px);
+  --distance: calc(var(--value) * .67 * 1px);
+  --perspective: calc(var(--value) * -.33 * 1px);
+  --angle: calc(var(--value) / 75 * 1deg);
+  --zoom: 2.3;
+  --active-translate-modifier: .6;
+  --vertical-offset: -0px;
+  font-family: 'Segoe UI'
+}
+
+/* Use something like this to make this more dynamic, probably won't work. Likely will need to use JS.
+
+li:first-child:nth-last-child(3),
+li:first-child:nth-last-child(3) ~ li {
+    width: 33.3333%;
+}
+
+*/
+
 .events {
-    padding: 10rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100vw;
-  }
-  .events__section {
-    background-repeat: no-repeat;
-    background-image: url('../assets/events/ellipse.svg');
-    background-position: right;
-    background-repeat: no-repeat;
-    padding: 15rem 7rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100vw;
-  }
-  
-  .events__heading {
-    text-align: center;
-    font-size: 5rem;
-    font-weight: 400;
-  }
-  
-  .events__link {
-    color: rgb(4, 3, 3);
-    font-size: 1.3rem;
-    cursor: pointer;
-    margin: 1.5em;
-    align-self: flex-start;
-  }
-  
-  .events__link-a {
-    font-size: 2rem;
-    color: #2c2c2c;
-    padding: 1rem;
-    /* margin:2rem 0; */
-    text-decoration: none;
-    margin-right: -4px;
-  }
-  .events__link-a:first-child {
-    padding-left: 0;
-  }
-  
-  .events__container {
-    position: relative;
-    display: flex;
-    overflow: hidden;
-    scroll-behavior: smooth;
-  }
-  .events__main {
-    position: relative;
-    width: 100%;
-    padding: 0 10rem;
-  }
-  .events__main::before {
+  padding: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  margin-bottom: 20%;
+}
+.events__section {
+  background-repeat: no-repeat;
+  background-image: url('../assets/events/ellipse.svg');
+  background-position: right;
+  background-repeat: no-repeat;
+  padding: 15rem 7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+}
+
+.events__heading {
+  text-align: center;
+  font-size: 5rem;
+  font-weight: 400;
+  margin-bottom: 5%;
+}
+
+button{
+  position: absolute;
+  z-index: 100;
+}
+
+.prev{
+  width: 90px;
+  height: 50px;
+  border-radius: 14px;
+  background-color: rgb(237, 55, 112);
+  left: 40%;
+  font-size: 20px;
+}
+
+.next {
+  width: 90px;
+  height: 50px;
+  border-radius: 14px;
+  background-color: rgb(41, 236, 87);
+  right: 40%;
+  font-size: 20px;
+}
+
+.viewport{
+   width: var(--width);
+  height: 300px;
+  position: relative;
+  overflow-x: clip;
+}
+
+.track {
+  margin-top: 5%;
+
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  perspective: var(--perspective);
+  transform-style: preserve-3d;
+  position: absolute;
+  transform: scale(var(--zoom)) translateY(calc(var(--vertical-offset) * -1));
+}
+
+.item{
+  height: calc(100% - 20px);
+  width: calc(18%);
+ 
+  transition: all .3s;
+  display: flex;
+  position: absolute;
+  perspective: 750px;
+  border-radius: 15px;
+}
+
+.item .preview {
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 5em;
+  display: flex;
+  width: 100%;
+  overflow: clip;
+  text-shadow: 0px 0px 3px black;
+  border-radius: 15px;
+}
+
+.events__card-image{
+  height: 200px;
+  margin: auto;
+}
+
+.item .caption {
+    color: white;
     position: absolute;
-    top: 0;
-    left: 0;
-    content: '';
-    height: 100%;
-    width: 10%;
-    z-index: 100;
-    box-shadow: inset 100px 0px 25px -25px #fff;
-  }
-  .events__main::after {
-    position: absolute;
-    top: 0;
-    right: 0;
-    content: '';
-    height: 100%;
-    width: 10%;
-    z-index: 100;
-    box-shadow: inset -100px 0px 25px -25px #fff;
-  }
-  .events__container-item {
-    margin: 1.5em;
-    text-align: center;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  .events__card {
-    height: 30rem;
-    width: 20rem;
-    background: linear-gradient(0deg, rgba(217, 217, 217, 0.15), rgba(217, 217, 217, 0.15)),
-      linear-gradient(0deg, #ffffff, #ffffff);
-    box-shadow: 0.5em 0.5em 1em rgba(0, 0, 0, 0.2);
-    border-radius: 5%;
-    display: flex;
-    padding: 2rem 0;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    /* align-content: space-around; */
-  }
-  .events__card-image {
-    border-radius: 50%;
-    width: 10rem;
-    height: 10rem;
-    /* padding: 10%; */
-  }
-  .events__card-date {
-    font-weight: 300;
-  }
-  .events__card-title {
-  }
-  .events__card-info {
-    font-size: 1.2rem;
-  }
-  .events__container-item:hover {
-    transform: scale(1.05);
-  }
-  .events__icon {
-    position: absolute;
-    z-index: 1000;
-    width: 5rem;
-    height: 5rem;
-    top: 40%;
-    cursor: pointer;
-  }
-  .events__icon-left {
-    left: 0;
-  }
-  .events__icon-right {
-    right: 0;
-    transform: rotate(180deg);
-  }
-  
-  /* .events__link:hover :nth-child(1) {
-    color: #4285f4;
-  } */
-  
-  .events__link-a:hover:nth-child(2),
-  .events__link-a:active:nth-child(2) {
-    color: #db4437;
-    border-bottom: 2px solid #db4437;
-  }
-  .events__link-a:hover:nth-child(1),
-  .events__link-a:active:nth-child(1) {
-    color: #4285f4;
-    border-bottom: 2px solid #4285f4;
-  }
-  .events__link-a:hover:nth-child(3),
-  .events__link-a:active:nth-child(3) {
-    color: #0f9d58;
-    border-bottom: 2px solid #0f9d58;
-  }
-  
+    top: 100%;
+    color: black;
+    opacity: 0;
+    margin-top: 20px;
+    width: 200%;
+    left: -50%;
+  transition: all .1s;
+  text-align: justify;
+    /*background: rgba(255,255,255, .2);*/
+}
+
+.events__card-date {
+  font-weight: 300;
+}
+.events__card-title {
+}
+.events__card-info {
+  font-size: 1.2rem;
+}
+
+.item .shadow {
+  background: linear-gradient(rgba(0,0,0, .2) 0%, rgba(0,0,0, .1));
+  opacity: .9;
+  position: absolute;
+  filter: blur( 35px);
+  height: 110%;
+  width: 110%;
+  transform: translateZ(-307px) translateY(432px) translateX(2px) scale(1.2) rotateX(96deg);
+}
+
+.track .item:nth-of-type(1) {
+  transform: rotateY(calc(var(--angle) * 3)) translateZ(var(--distance)) translateY(var(--vertical-offset));
+}
+
+.track .item:nth-of-type(2) {
+  transform: rotateY(calc(var(--angle) * 2)) translateZ(var(--distance))  translateY(var(--vertical-offset));
+}
+
+.track .item:nth-of-type(3) {
+  transform: rotateY(calc(var(--angle))) translateZ(var(--distance)) translateY(var(--vertical-offset));
+}
+
+.track .item:nth-of-type(4) {
+  transform: rotateY(0deg) translateZ(calc(var(--distance) * var(--active-translate-modifier))) translateY(var(--vertical-offset));
+}
+
+.track .item:nth-of-type(4) .caption {
+  opacity: 1;
+  transition-delay:.2s;
+}
+
+.track .item:nth-of-type(5) {
+  transform: rotateY(calc(var(--angle) * -1)) translateZ(var(--distance)) translateY(var(--vertical-offset));
+}
+
+.track .item:nth-of-type(6) {
+  transform: rotateY(calc(var(--angle) * -2)) translateZ(var(--distance)) translateY(var(--vertical-offset));
+}
+
+.track .item:nth-of-type(7) {
+  transform: rotateY(calc(var(--angle) * -3)) translateZ(var(--distance)) translateY(var(--vertical-offset));
+}
