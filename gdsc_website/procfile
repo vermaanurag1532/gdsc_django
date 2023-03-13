@@ -1,0 +1,1 @@
+web: gunicorn gdsc_website.wsgi 
